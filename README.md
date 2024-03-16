@@ -28,25 +28,42 @@ This table below shows all supplemental materials. All sheets in Tables S1, S2, 
 ![image](Image/Video%20S3%20Time%20for%20deriving%20one%20building-level%20WPS%20using%20surrogate%20model-based%20approach.gif)
 ↑↑↑Time for deriving one building-level WPS using surrogate model-based approach
 
-# 4 Repository reuse 
-## 4.1 Set environment 
-All environmental configurations are specified in the requirement.
+# 4 Methodology 
+## 4.1 BIM-based WPS-related building information transformation 
+The data transformation from BIM’s IFC format to EnergyPlus’s IDF format aims to avoid manually and repeatedly establishing the building model for WPS-conditioned simulations. This process involves three main steps: (i) clarifying the data items related to WPS, (ii) devising the mapping schema between IFC and IDF, and (iii) developing the WPS-oriented IFC2IDF data transformation function library. 
 
 
-Before submitting these codes to Github, all of them have been tested to be well-performed. Even so, we are not able to guarantee their operation in other computing environments due to the differences in the python version, computer operating system, and adopted hardware.
+This library includes 18 functions to ensure the transformation of object attributes from IFC  to their counterparts in IDF.
 
-
-## 4.2 Reuse or Retrain the models 
-
-The window placement methodology in the paper can be transferred to new buildings beyond the case study, with the IFC2IDF function library for data transformation and the NSGA-II-based WPS optimization algorithm remaining unchanged for direct reuse. 
 
 ![image](Image/IFC2IDF.png)
+↑↑↑Codes for IFC2IDF function library
 
-↑↑↑IFC2IDF function library
 
-![image](Image/WALL.png)
+## 4.2 Surrogate model development for assessing WPS performance
 
-↑↑↑Codes for taking the G1 function as an example
+4.2.1 Generate dataset for surrogate model development
 
-![image](Image/NSGA.png)
+The dataset formulation consists of generating WPSs with the grid method and obtaining the energy consumption and natural lighting performance of corresponding WPSs.
+
+![image](Image/Grid-based%20dataset%20generation.png)
+↑↑↑Codes for grid-based dataset generation
+
+4.2.2 Train the surrogate model
+
+The training of the surrogate model primarily starts with designing the structure of the deep-learning-based surrogate model. This surrogate model is designed as a multi-layer fully connected network (FCN). It utilizes a WPS at the input layer, producing TEC and UDI as the outputs.
+
+![image](Image/Surrogate%20model%20training.png)
+↑↑↑Codes for Surrogate model training
+## 4.3 Multi-objective optimization of WPSs
+4.3.1 Optimize WPSs multi-objectively by NSGA-II
+An algorithm based on NSGA-II has been devised for WPS optimization. The NSGA-II-based WPS multi-objective optimization algorithm is structured into 10 steps. The coordinates of the window’s diagonals and  are skillfully transformed into a four-gene chromosome to represent a WPS.
+
+![image](Image/NSGA-II-based%20WPS%20optimization%20algorithm.png)
 ↑↑↑Codes for NSGA-II-based WPS optimization algorithm
+
+4.3.2 Write the optimized WPSs into deliverable drawings
+
+In contrast to existing studies that only deliver certain parameters (e.g., WWR), a WPS2Drawing conversion tool has been developed. This tool can transcribe the optimized WPSs into drawings for WPS delivery, recognizing that drawings continue to be the primary medium for conveying design information in real-world engineering projects. The WPS2Drawing process entails defining the coordinate system for the blank drawing, reading the WPSs generated through multi-objective optimization, and transcribing these WPSs into drawings.
+![image](Image/WPS2Drawing.png)
+↑↑↑Codes for WPS2Drawing
