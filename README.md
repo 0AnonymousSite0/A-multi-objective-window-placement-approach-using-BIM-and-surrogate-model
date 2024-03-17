@@ -51,7 +51,7 @@ The dataset formulation consists of generating WPSs with the grid method and obt
 
 4.2.2 Train the surrogate model
 
-The training of the surrogate model primarily starts with designing the structure of the deep-learning-based surrogate model. This surrogate model is designed as a multi-layer fully connected network (FCN). It utilizes a WPS at the input layer, producing TEC and UDI as the outputs.
+The training of the surrogate model primarily starts with designing the structure of the deep-learning-based surrogate model. This surrogate model is designed as a multi-layer fully connected network (FCN). It utilizes a WPS at the input layer, producing the Total Energy Consumption (TEC) and Useful Daylight Illuminance（UDI）as the outputs.
 
 ![image](Image/Surrogate%20model%20training.png)
 ↑↑↑Codes for Surrogate model training
