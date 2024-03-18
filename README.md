@@ -14,7 +14,7 @@ This table below shows all supplemental materials. All sheets in Tables S1, S2, 
 2.2 We greatly appreciate the selfless spirits of these voluntary contributors of a series of open python libraries, including ifcopenshell (https://github.com/stefkeB/ifcopenshell_examples), pyautocad (https://github.com/reclosedev/pyautocad), and so on. Our work stands on the shoulders of these giants.
 
 2.3 As for anything regarding the copyright, please refer to the MIT License or contact the authors.
-# 3 The time consumption comparison
+# 3 Videos for the time consumption comparison
  
 3.1 The EnergyPlus simulation software necessitates 0.46 seconds for a singular WPS simulation, whereas the surrogate model requires only 0.0005 seconds with the same computer configurations when assessing the TEC and UDI of WPSs.
 ![image](Image/Video%20S1%20Time%20for%20software%20simulation%20to%20process%20one%20WPS%20of%20one%20room.gif)
